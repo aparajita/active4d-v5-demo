@@ -1,0 +1,36 @@
+<% /*
+<fusedoc fuse="dsp_errorHandling.a4d" language="Active4D" specification="2.0">
+	<responsibilities>
+		I talk about error handling and let the user see internal/custom error pages.
+	</responsibilities>
+	<io>
+		<in>
+			<string name="$XFA_onDefaultError" />
+			<string name="$XFA_onCustomError" />
+		</in>
+	</io>	
+</fusedoc>
+*/ 
+
+fusebox.head.setTitle(fusebox.head.getTitle + "/Error Handling")
+%>
+
+<div id="content">
+
+  <h1>Error Handling</h1>
+  
+  <p>When an execution error occurs in Active4D, by default you will see a page
+  that shows the stack trace, the offending line, and a description of the error.</p>
+  
+  <p>This is wonderful during development, but you don't want users on a production site
+  to see this kind of error. Active4D allows you to set a custom error page which will
+  be executed when an execution error occurs. You can set the error page globally in
+  Active4D.ini, or per request by calling <strong>set error page</strong>.</p>
+  
+  <p>Click on the links below to see the two types of error page in action.</p>
+  
+  <p><a href="<%=fusebox.makeURL($XFA_onDefaultError)%>">Show the default error page</a></p>
+  
+  <p><a href="<%=fusebox.makeURL($XFA_onCustomError)%>">Show the custom error page</a></p>
+  
+</div>

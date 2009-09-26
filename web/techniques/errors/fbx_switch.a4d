@@ -1,0 +1,28 @@
+<% /*
+<fusedoc fuse="fbx_switch.a4d" language="Active4D" specification="2.0">
+	<responsibilities>
+		I am the switch statement that handles fuseactions in this circuit.
+		I delegate to the fuses responsible for handling a given fuseaction.
+	</responsibilities>
+</fusedoc>
+*/
+
+$fuseaction := $fusebox{"fuseaction"}
+
+case of
+	:($fuseaction = "main")
+		$XFA_onCustomError := '$fusebox{"circuit"}.customError'
+		$XFA_onDefaultError := '$fusebox{"circuit"}.defaultError'
+		include("views/dsp_errorHandling.a4d")
+		
+	:($fuseaction = "defaultError")
+		include("controllers/act_defaultError.a4d")
+		
+	:($fuseaction = "customError")
+		$errorHandler := join paths($fusebox{"currentPath"}; "controllers/act_errorHandler.a4d")
+		include("controllers/act_customError.a4d")
+		
+else
+	throw('Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
+end case
+%>

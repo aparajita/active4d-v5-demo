@@ -1,0 +1,5 @@
+<%
+	// When handling errors in fusebox, we use fusebox.handleError
+	// to transfer the error context info to the session.
+	fusebox.handleError("root.handleError")
+%>

@@ -1,0 +1,12 @@
+<% /*
+<fusedoc fuse="act_defaultError.a4d" language="Active4D" specification="2.0">
+	<responsibilities>
+		I force an error to occur and to display the default error page.
+	</responsibilities>
+</fusedoc>
+*/ 
+
+set error page("")  // not strictly necessary if set in Active4D.ini
+$foo := $bar        // this will cause an error
+%>
+
