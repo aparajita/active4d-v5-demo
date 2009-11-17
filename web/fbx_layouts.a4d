@@ -13,7 +13,7 @@
 */
 
 // Don't use a layout with Ajax
-if (request info{"*ajax"} = "1")
+if (request info{"*ajax"})
 	$fusebox{"layoutDir"}  := ""
 	$fusebox{"layoutFile"} := ""
 else
