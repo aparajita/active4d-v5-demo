@@ -1,6 +1,8 @@
 <%
 /*
 	image.a4d
+	
+	Copyright (c) 2001-2010 Aparajita Fishman
 */		
 
 c_real($width; $height)
@@ -37,7 +39,7 @@ case of
 					$qryPtr := get field pointer($table; $field)
 					
 					if (not(nil($qryPtr)))
-						get field properties($imgPtr; $type)
+						get field properties($qryPtr; $type)
 						
 						if ($type = Is Alpha Field)
 							$value := $params{"qry_value"}
@@ -101,7 +103,7 @@ if (picture size($pict) > 0)
 	
 	if ($format = "")
 		if ($preferredFormat = "")
-			$format := "gif"
+			$format := "png"
 		else
 			$format := $preferredFormat
 		end if
