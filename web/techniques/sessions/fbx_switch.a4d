@@ -14,15 +14,15 @@ case of
 		$XFA_onSed := '$fusebox{"circuit"}.sed'
 		$XFA_onMonitor := '$fusebox{"circuit"}.monitor'
 		include("views/dsp_sessions.a4d")
-		
+
 	:($fuseaction = "sed")
 		$sedPath := "/controllers/sed.a4d"
 		include("views/dsp_sed.a4d")
-		
+
 	:($fuseaction = "monitor")
 		include("views/dsp_monitor.a4d")
-		
+
 else
-	throw('Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
+	throw(fusebox.kInvalidActionError; 'Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
 end case
 %>

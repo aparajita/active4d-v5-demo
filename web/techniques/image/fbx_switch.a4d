@@ -13,8 +13,8 @@ case of
 	:($fuseaction = "main")
 		include("controllers/act_calcImageStuff.a4d")
 		include("views/dsp_images.a4d")
-		
+
 else
-	throw('Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
+	throw(fusebox.kInvalidActionError; 'Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
 end case
 %>

@@ -14,13 +14,13 @@ case of
 	:($fuseaction = "main")
 		$XFA_onSubmit := '$fusebox{"circuit"}.processUpload'
 		include("views/dsp_uploads.a4d")
-		
+
 	:($fuseaction = "processUpload")
 		$XFA_onTryAgain := '$fusebox{"circuit"}.main'
 		include("controllers/act_processUpload.a4d")
 		include("views/dsp_uploadReceived.a4d")
-		
+
 else
-	throw('Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
+	throw(fusebox.kInvalidActionError; 'Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
 end case
 %>

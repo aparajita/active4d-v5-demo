@@ -8,7 +8,7 @@ library "demo"
 /*
 	library constructor
 */
-method "__load__"	
+method "__load__"
 end method
 
 
@@ -21,31 +21,31 @@ end method
 
 /*
 	makeUrl
-	
+
 	This method is used as the URL factory by fusebox.makeURL.
 	It makes a url in the /circuit/action style we are using.
 */
 method "makeUrl"($inFuseaction; $inQuery = "")
-	
+
 	$circuit := slice string($inFuseaction; "."; $action)
 	$url := "/{0}/{1}" %% ($circuit; $action)
-	
-	if (length($inQuery) > 0)
+
+	if ($inQuery)
 		$url += choose($inQuery[[1]] = "?"; ""; "?") + $inQuery
 	end if
-	
+
 	return ($url)
-	
+
 end method
 
 
 /*
 	cudIngredients
-	
+
 	A processor used by a4d.utils.cud with the [ingredients] table.
 */
 method "cudIngredients"($cudAction; $cudPhase; $cudTable; $inStatus; $attributes; $cudTimestampField; $cudTimestamp)
-	
+
 	case of
 		:($cudPhase = "query")
 			// cud wants to find the record to operate on
@@ -59,9 +59,9 @@ method "cudIngredients"($cudAction; $cudPhase; $cudTable; $inStatus; $attributes
 			[ingredients]ship_unit_id := num($attributes{"f_unit_id"})
 			[ingredients]price := num($attributes{"f_price"})
 	end case
-	
+
 	return ("success")
-	
+
 end method
 
 end library

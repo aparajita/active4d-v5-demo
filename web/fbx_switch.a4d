@@ -12,11 +12,14 @@ $fuseaction := $fusebox{"fuseaction"}
 case of
 	:($fuseaction = "main")
 		include("views/dsp_hello.a4d")
-		
+
 	:($fuseaction = "handleError")
 		include("views/dsp_errorHandler.a4d")
-		
+
+	:($fuseaction = "httpError")
+		include("views/dsp_httpErrorHandler.a4d")
+
 else
-	throw('Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
+	throw(fusebox.kInvalidActionError; 'Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
 end case
 %>

@@ -8,7 +8,7 @@
 		<out>
 			<string name="$circuitDir" comments="name of the target circuit directory" />
 		</out>
-	</io>	
+	</io>
 </fusedoc>
 */
 
@@ -20,6 +20,6 @@ case of
 		include("views/dsp_timeout.a4d")
 
 else
-	throw('Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
+	throw(fusebox.kInvalidActionError; 'Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
 end case
 %>

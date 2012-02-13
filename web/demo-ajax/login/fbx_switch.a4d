@@ -18,19 +18,19 @@ case of
 	:($fuseaction = "main")
 		$XFA_onSubmit := '$fusebox{"circuit"}.validateLogin'
 		include("views/dsp_loginForm.a4d")
-		
+
 	:($fuseaction = "validateLogin")
 		$XFA_onLogout := '$fusebox{"circuit"}.logout'
 		include("models/qry_validateLogin.a4d")
 		include("controllers/act_processLogin.a4d")
-		
+
 	:($fuseaction = "logout")
 		include("controllers/act_logout.a4d")
-		
+
 		$XFA_onLogin := '$fusebox{"circuit"}.main'
 		include("views/dsp_logout.a4d")
-		
+
 else
-	throw('Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
+	throw(fusebox.kInvalidActionError; 'Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
 end case
 %>

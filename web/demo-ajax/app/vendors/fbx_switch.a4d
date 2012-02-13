@@ -18,20 +18,20 @@ $fuseaction := $fusebox{"fuseaction"}
 case of
 	:($fuseaction = "list")
 		include("views/dsp_list.a4d")
-		
+
 	:($fuseaction = "selectForGrid")
 		include("models/qry_selectMany.a4d")
 		include("../../controllers/act_makeJsonResult.a4d")
-		
+
 	:($fuseaction = "load")
 		include("models/qry_selectOne.a4d")
 		include("../../controllers/act_makeJsonResult.a4d")
-		
+
 	:($fuseaction =~ "/^(update|delete)$/")
 		include("models/qry_update.a4d")
 		include("../../controllers/act_makeJsonResult.a4d")
-		
+
 else
-	throw('Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
+	throw(fusebox.kInvalidActionError; 'Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
 end case
 %>
